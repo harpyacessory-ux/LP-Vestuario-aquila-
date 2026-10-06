@@ -507,22 +507,21 @@ section.light{background-image:
 /* traço de cor no topo dos cards claros */
 section.light .card{position:relative;overflow:hidden}
 section.light .card::after{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--mk,#1B3FA8)}
-/* "Para quem e": retrato da lojista ao lado do cabecalho.
-   O arquivo ja sai do tratamento com as sombras levantadas e as quatro bordas
-   esmaecidas em alpha, entao ele sangra direto sobre o fundo claro da secao —
-   sem moldura, sem sombra e sem mascara em CSS. Se a foto for trocada, o novo
-   arquivo precisa receber o mesmo tratamento, senao aparece um retangulo de
-   borda dura aqui.
-   No mobile ela entra no fluxo, alinhada a direita; a partir de 960px passa a
-   ocupar o canto inferior direito do bloco. */
+/* "Para quem e": lojista sobre o cenario da loja (arara, caixas, bancada).
+   O arquivo e uma composicao: recorte da lojista em cor original por cima do
+   cenario clareado, com as quatro bordas esmaecidas em alpha (receita no
+   README). Por isso ele sangra direto sobre o fundo claro, sem moldura.
+   No desktop a imagem e larga e o lado esquerdo, ja quase transparente, passa
+   por baixo do texto — o cabecalho fica acima dela via z-index. */
 .pq-top{position:relative}
-.pq-foto{display:block;height:clamp(260px,54vw,340px);width:auto;
-  margin:.6rem -.5rem -1rem auto;pointer-events:none}
+.pq-top .head{position:relative;z-index:1}
+.pq-foto{display:block;width:100%;height:auto;margin:.8rem 0 -1rem;pointer-events:none}
 @media(min-width:960px){
   .pq-top{min-height:clamp(420px,42vw,560px)}
   .pq-top .head{max-width:min(50%,56ch)}
   .pq-foto{position:absolute;right:0;bottom:0;margin:0;
-    height:calc(100% + clamp(1rem,2.5vw,2.5rem));width:auto;max-width:50%}
+    height:calc(100% + clamp(1rem,2.5vw,2.5rem));width:auto;max-width:62%;
+    object-fit:cover;object-position:right bottom}
 }
 
 #paraquem .card:nth-child(1){--mk:var(--ml-yellow)}
@@ -681,7 +680,7 @@ section.light h2 b{
         Atendemos de quem está começando do zero a quem já passa de R$ 100 mil por mês no canal.</p>
       </div>
       <img class="pq-foto" src="assets/lojista-vestuario.webp" alt=""
-           width="960" height="1024" loading="lazy" decoding="async">
+           width="1336" height="1024" loading="lazy" decoding="async">
     </div>
 
     <div class="grid g4 reveal">

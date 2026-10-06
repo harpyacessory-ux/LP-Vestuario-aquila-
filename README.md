@@ -45,22 +45,27 @@ Hospedada na Vercel, conectada a este repositório. Todo push na branch `main` p
 
 ## Tratamento da foto da seção "Para quem é"
 
-`assets/lojista-vestuario.webp` sangra sobre o fundo claro sem moldura. Isso só
-funciona porque o arquivo recebe três tratamentos antes de entrar no site: as
-sombras são levantadas (o original tem fundo escuro), as quatro bordas ganham
-esmaecimento em alpha e o resultado vira webp com canal alfa.
+`assets/lojista-vestuario.webp` é uma composição de dois arquivos que ficam na raiz
+(fora do git, por serem PNGs de 2 MB):
 
-Para refazer a partir de um novo original:
+- `Confident Marketplace Seller with Packing Supplies.png` — fornece o cenário
+  (arara, caixas, bancada). É clareado, e a faixa central, onde havia outra
+  pessoa, recebe desfoque forte para não aparecer "fantasma" atrás da lojista.
+- `Smiling shop owner transparent cutout.png` — o recorte da lojista, que entra
+  por cima em cor original.
+
+Depois, as quatro bordas recebem esmaecimento em alpha e o resultado vira webp
+com canal alfa. Para refazer:
 
 ```bash
-FX="crop=960:1024:576:0,curves=all='0/0.50 0.25/0.70 0.6/0.88 1/1',format=rgba,\
-geq=r='r(X,Y)':g='g(X,Y)':b='b(X,Y)':\
-a='255*min(1,min(min(X/260,Y/130),min((W-1-X)/150,(H-1-Y)/130)))'"
-
-ffmpeg -i original.png -vf "$FX" -frames:v 1 tmp.png
+ffmpeg -i "Confident Marketplace Seller with Packing Supplies.png" \
+  -i "Smiling shop owner transparent cutout.png" -filter_complex "\
+[0:v]curves=all='0/0.70 0.3/0.85 0.7/0.95 1/1',eq=saturation=0.85,format=gbrp,split[a][b];\
+[a]gblur=sigma=2.5[s];[b]gblur=sigma=70[h];\
+[s][h]blend=all_expr='A*(1-clip((X-480)/90,0,1)*clip((1290-X)/90,0,1))+B*clip((X-480)/90,0,1)*clip((1290-X)/90,0,1)',format=rgba[bg];\
+[1:v]scale=-1:1100[fg];[bg][fg]overlay=504:70,crop=1336:1024:200:0,format=rgba,\
+geq=r='r(X,Y)':g='g(X,Y)':b='b(X,Y)':a='255*min(1,min(min(X/380,Y/70),min((W-1-X)/120,(H-1-Y)/160)))'" \
+  -frames:v 1 tmp.png
 ffmpeg -i tmp.png -c:v libwebp -pix_fmt yuva420p -quality 86 \
   -compression_level 6 assets/lojista-vestuario.webp
 ```
-
-Ajuste o `crop` ao enquadramento do novo arquivo. Se a foto for trocada sem esse
-tratamento, aparece um retângulo de borda dura na seção.
