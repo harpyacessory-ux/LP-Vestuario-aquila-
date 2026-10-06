@@ -16,3 +16,7 @@ node_modules/
 # Vídeos originais em 4K (160 MB cada) — acima do limite do GitHub.
 # No site vão as versões comprimidas em assets/video-*.mp4
 /Visibilidade*.mp4
+
+# Fotos originais em alta (PNG de 2 MB) — no site vai a versao recortada
+# e comprimida em assets/lojista-vestuario.webp
+/Confident Marketplace Seller*.png
