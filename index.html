@@ -1,0 +1,1269 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Aquila Marketing Digital — Assessoria em Mercado Livre, Shopee e Amazon</title>
+<meta name="description" content="Assessoria especializada em marketplace. Ads calibrado, anúncios ranqueados e processos automatizados para escalar vendas sem perder margem. Black Friday: R$ 750/mês, de R$ 1.250.">
+<meta name="theme-color" content="#0A1440">
+<meta property="og:title" content="Aquila Marketing Digital — Escale no marketplace sem perder margem">
+<meta property="og:description" content="Especialista dedicado, acompanhamento próximo e estratégia construída a partir da análise da sua concorrência.">
+<link rel="icon" href="assets/logo-aquila.webp">
+<link rel="apple-touch-icon" href="assets/logo-aquila.webp">
+<meta property="og:image" content="assets/logo-aquila.webp">
+<link rel="preload" as="image" href="assets/mascote-aquila.webp" fetchpriority="high">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- =================================================================
+     AQUILA MARKETING DIGITAL — LANDING PAGE BLACK FRIDAY
+     Arquivo único (HTML + CSS + JS). Ajustes: bloco CONFIG no final do arquivo.
+     Estrutura: header · hero · marquee · problema · sistema · escopo
+     · método · resultados · oferta · FAQ · form · rodapé
+     ================================================================= -->
+
+<style>
+/* ===== 1. TOKENS ================================================= */
+:root{
+  color-scheme:dark;
+  --navy-900:#0A1440; --navy-800:#101C4E; --royal:#1B3FA8;
+  --electric:#2E7BE8; --electric-soft:#6FA8F5;
+  --bf-black:#05060F; --bf-black-2:#0B0D1C;
+  --white:#fff; --ink:#E9EEFB; --muted:#9FADD4;
+  --line:rgba(125,163,255,.18); --line-2:rgba(125,163,255,.36);
+  --glass:linear-gradient(165deg,rgba(255,255,255,.07),rgba(255,255,255,.015));
+  --f-display:'Sora','Segoe UI',system-ui,sans-serif;
+  --f-text:'Inter','Segoe UI',system-ui,sans-serif;
+  --wrap:1180px; --nav-h:68px;
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:calc(var(--nav-h) + 24px + env(safe-area-inset-top,0px))}
+body{margin:0;background-color:var(--navy-900);color:var(--ink);font-family:var(--f-text);
+  font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img,svg{max-width:100%;display:block}
+a{color:inherit}
+button{font:inherit;cursor:pointer}
+:focus-visible{outline:3px solid var(--electric-soft);outline-offset:3px;border-radius:6px}
+
+h1,h2,h3{font-family:var(--f-display);margin:0 0 .5em;letter-spacing:-.025em;line-height:1.07}
+h1{font-size:clamp(2.15rem,5vw,4.1rem);font-weight:300}
+h1 b{font-weight:800;color:#fff}
+h2{font-size:clamp(1.8rem,3.9vw,3rem);font-weight:300;color:var(--ink)}
+h2 b{font-weight:700;color:#fff}
+h3{font-size:1.14rem;font-weight:600;color:#fff;letter-spacing:-.01em}
+p{margin:0 0 1.15em;max-width:66ch}
+.lead{font-size:clamp(1rem,1.5vw,1.15rem);color:var(--muted)}
+.eyebrow{display:inline-block;font-family:var(--f-display);font-size:.72rem;font-weight:600;
+  letter-spacing:.22em;text-transform:uppercase;color:var(--electric-soft);
+  padding:.35rem .8rem;border:1px solid var(--line-2);border-radius:999px;margin-bottom:1.4rem}
+strong{color:#fff;font-weight:600}
+.n{font-variant-numeric:tabular-nums}
+
+/* ===== 2. FUNDO =================================================== */
+.bg{position:fixed;inset:0;z-index:-2;overflow:hidden;
+  background:radial-gradient(1200px 800px at 82% -12%,rgba(46,123,232,.32),transparent 60%),
+  radial-gradient(900px 900px at 0% 30%,rgba(27,63,168,.42),transparent 62%),
+  linear-gradient(160deg,#0A1440,#101C4E 48%,#0B1237)}
+.bg::before{content:"";position:absolute;inset:-15% -20%;
+  background:linear-gradient(115deg,rgba(27,63,168,.5),rgba(46,123,232,.06));
+  clip-path:polygon(0 12%,100% 0,100% 30%,0 58%);opacity:.5}
+.bg::after{content:"";position:absolute;inset:-15% -20%;
+  background:linear-gradient(200deg,rgba(46,123,232,.2),transparent 68%);
+  clip-path:polygon(0 70%,100% 42%,100% 100%,0 100%);opacity:.55}
+.bg-net{position:fixed;inset:0;z-index:-1;opacity:.45;pointer-events:none;width:100%;height:100%}
+
+/* ===== 3. LAYOUT ================================================== */
+.wrap{width:min(100% - 2.5rem,var(--wrap));margin-inline:auto}
+section{position:relative;padding:clamp(4rem,8vw,7.5rem) 0}
+.head{max-width:56ch;margin-bottom:clamp(2rem,4vw,3.4rem)}
+.head.mid{margin-inline:auto;text-align:center}
+.head.mid p{margin-inline:auto}
+.grid{display:grid;gap:1.1rem}
+@media(min-width:700px){.g2{grid-template-columns:1fr 1fr}}
+@media(min-width:960px){.g3{grid-template-columns:repeat(3,1fr)}.g4{grid-template-columns:repeat(4,1fr)}}
+.split{display:grid;gap:clamp(2rem,4vw,4rem);align-items:center}
+@media(min-width:960px){.split{grid-template-columns:1.05fr .95fr}}
+
+.card{background:var(--glass);border:1px solid var(--line);border-radius:18px;
+  padding:clamp(1.3rem,2.2vw,1.8rem);backdrop-filter:blur(10px)}
+.card p{font-size:.95rem;color:var(--muted);margin:0}
+/* ===== PLAYER DE VIDEO ==========================================
+   Moldura com borda em gradiente: um padding que deixa ver o fundo
+   colorido em volta do video. 16:9 no desktop, 9:16 no celular — o JS
+   troca o arquivo junto com a proporcao. */
+.vframe{margin:0;display:flex;flex-direction:column;gap:1rem}
+.vframe .vplayer{position:relative;border-radius:22px;padding:7px;
+  background:linear-gradient(150deg,rgba(104,152,255,.55),rgba(255,255,255,.07) 42%,rgba(104,152,255,.3));
+  box-shadow:0 42px 80px -34px rgba(2,6,25,.95)}
+.vframe video{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;
+  border-radius:16px;background:#05081A}
+.vframe figcaption{display:flex;flex-direction:column;gap:.2rem;text-align:center}
+.vframe figcaption strong{font-family:var(--f-display);font-size:1rem;color:var(--ink)}
+.vframe figcaption span{font-size:.86rem;color:var(--muted)}
+
+/* O player ganha camada propria: o que muda dentro dele nao obriga o
+   resto da pagina a repintar. */
+.vframe .vplayer{contain:paint;transform:translateZ(0)}
+
+/* Enquanto o video toca, desliga o que seria recalculado a cada quadro:
+   os blur de fundo do header e da barra fixa e as animacoes continuas.
+   Sao os tres custos que faziam a reproducao engasgar. */
+body.tocando .nav,
+body.tocando .sticky,
+body.tocando .hero-chip,
+body.tocando .print-zoom{backdrop-filter:none}
+body.tocando .nav{background:#070D2A}
+body.tocando .sticky{background:#05060F}
+body.tocando .mk,
+body.tocando .mq-track{animation-play-state:paused}
+
+/* botao de play sobre o poster; some assim que o video comeca */
+.vplay{position:absolute;inset:7px;display:grid;place-items:center;cursor:pointer;
+  border:0;border-radius:16px;background:linear-gradient(180deg,rgba(5,8,26,.1),rgba(5,8,26,.45));
+  color:#fff;z-index:2;transition:background .25s}
+.vplay::before{content:"";position:absolute;width:82px;height:82px;border-radius:50%;
+  background:rgba(27,63,168,.78);border:1px solid rgba(255,255,255,.45);
+  backdrop-filter:blur(6px);box-shadow:0 14px 40px rgba(2,6,25,.6);transition:transform .25s}
+.vplay svg{position:relative;z-index:1;margin-left:5px;transition:transform .25s}
+.vplay:hover::before,.vplay:focus-visible::before{transform:scale(1.09)}
+.vplay:hover svg{transform:scale(1.09)}
+.vplay[hidden]{display:none}
+@media(max-width:700px){
+  .vframe video{aspect-ratio:9/16;max-height:72vh;margin-inline:auto}
+  .vplay::before{width:68px;height:68px}
+}
+@media(prefers-reduced-motion:reduce){.vplay::before,.vplay svg{transition:none}}
+
+/* ilustracao solta na coluna, sem moldura: a arte ja tem brilho proprio */
+.ilustra{display:block;width:100%;max-width:640px;height:auto;margin-inline:auto;
+  filter:drop-shadow(0 28px 44px rgba(2,5,20,.45))}
+section.light .ilustra{filter:drop-shadow(0 26px 40px rgba(14,26,69,.18))}
+/* no bloco de camadas a arte e vertical e sobe ate a altura do cabecalho */
+#sistema .ilustra{max-width:470px}
+@media(min-width:960px){
+  #sistema .ilustra{align-self:start;margin-top:calc(-1 * clamp(5rem,12vw,11rem))}
+}
+
+/* Print de painel. O arquivo e muito largo para a coluna, entao entra ampliado
+   e ancorado no canto superior esquerdo, onde ficam os numeros que importam.
+   O card inteiro e um link que abre o print completo. */
+.print{position:relative;display:block;min-height:320px;overflow:hidden;
+  border:1px solid var(--line-2);border-radius:20px;background:#fff;text-decoration:none;cursor:zoom-in}
+/* Cada print tem o painel numa posicao diferente, entao o enquadramento e por
+   canal. As margens sao em %, que o CSS calcula sempre sobre a largura do card:
+   assim o recorte acompanha o card em qualquer tela. */
+.print img{position:absolute;top:0;left:0;max-width:none;height:auto;
+  width:var(--zoom,215%);margin-left:var(--mx,0);margin-top:var(--my,0);
+  transition:transform .4s ease}
+.print.sp img{--zoom:253%;--mx:-34.5%;--my:-31.6%}
+.print.ml img{--zoom:296%;--mx:-9.2%;--my:-52.9%}
+.print:hover img,.print:focus-visible img{transform:scale(1.03)}
+.print .mkt{position:absolute;top:.8rem;left:.8rem;z-index:2}
+.print-zoom{position:absolute;right:.7rem;bottom:.7rem;z-index:2;font-size:.68rem;
+  letter-spacing:.04em;padding:.3rem .6rem;border-radius:999px;
+  background:rgba(5,8,26,.72);color:#fff;backdrop-filter:blur(6px)}
+
+.media{border:1px solid var(--line-2);border-radius:20px;min-height:320px;
+  background:repeating-linear-gradient(135deg,rgba(255,255,255,.035) 0 14px,transparent 14px 28px),
+  linear-gradient(160deg,rgba(16,28,78,.9),rgba(5,8,26,.9));
+  display:grid;place-items:center;text-align:center;padding:1.5rem;color:var(--muted);font-size:.85rem}
+
+/* ===== 4. BOTÕES ================================================= */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.55rem;
+  font-family:var(--f-display);font-weight:700;font-size:1rem;line-height:1.2;
+  padding:1.05rem 1.9rem;border-radius:12px;border:0;text-decoration:none;text-align:center;
+  background:linear-gradient(135deg,#2E7BE8,#1B3FA8);color:#fff;
+  box-shadow:0 12px 34px -14px rgba(46,123,232,1),inset 0 1px 0 rgba(255,255,255,.26);
+  transition:filter .18s ease,box-shadow .18s ease,transform .18s ease}
+.btn:hover{filter:brightness(1.09);box-shadow:0 18px 44px -14px rgba(46,123,232,1)}
+.btn:active{transform:translateY(1px)}
+.btn-ghost{background:transparent;border:1px solid var(--line-2);box-shadow:none;font-weight:600;color:var(--ink)}
+.btn-sm{padding:.72rem 1.25rem;font-size:.9rem}
+.btn-block{width:100%}
+.micro{font-size:.82rem;color:var(--muted);margin:.85rem 0 0}
+
+/* ===== 5. HEADER ================================================= */
+.nav{position:sticky;top:0;z-index:50;height:var(--nav-h);
+  padding-top:env(safe-area-inset-top,0px);
+  background:rgba(7,13,42,.82);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nav .wrap{height:var(--nav-h);display:flex;align-items:center;justify-content:space-between;gap:1rem}
+/* Lockup fiel a logo oficial: simbolo em PNG transparente + "Aquila" em peso leve.
+   O arquivo tem folga em volta do desenho, por isso a altura e maior que o
+   simbolo aparente. */
+.mark{display:block;flex:none;height:38px;width:auto}
+.mark-sm{height:30px}
+.logo{display:flex;align-items:center;gap:.5rem;text-decoration:none;color:#fff}
+.logo span{font-family:var(--f-display);font-weight:400;font-size:1.3rem;letter-spacing:.005em;
+  color:#fff;line-height:1}
+.logo small{display:block;font-size:.5rem;letter-spacing:.33em;color:rgba(255,255,255,.72);
+  font-weight:500;margin-top:.3rem}
+.nav-links{display:none;gap:1.6rem;font-size:.9rem;color:var(--muted)}
+.nav-links a{text-decoration:none}
+.nav-links a:hover{color:#fff}
+@media(min-width:1000px){.nav-links{display:flex}}
+
+/* ===== 6. HERO =================================================== */
+.hero{padding-top:clamp(2.5rem,5vw,4.5rem);padding-bottom:clamp(2.5rem,5vw,4rem)}
+.hero h1{margin-bottom:1.2rem;max-width:15ch}
+.hero .lead{max-width:48ch}
+.hero-cta{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:1.8rem}
+.stats{display:flex;gap:clamp(1.5rem,4vw,3rem);flex-wrap:wrap;margin-top:2.6rem;
+  padding-top:1.8rem;border-top:1px solid var(--line)}
+.stat b{display:block;font-family:var(--f-display);font-weight:800;color:#fff;
+  font-size:clamp(1.8rem,3.6vw,2.6rem);line-height:1;letter-spacing:-.03em}
+.stat span{font-size:.86rem;color:var(--muted);display:block;margin-top:.35rem;max-width:20ch}
+.hero-art{position:relative;display:grid;place-items:center;isolation:isolate}
+/* mascote 3D: a foto manda no tamanho do bloco, o resto flutua em volta */
+.hero-art .peng-photo{position:relative;z-index:2;display:block;width:min(100%,430px);height:auto;
+  filter:drop-shadow(0 34px 44px rgba(2,5,20,.55))}
+/* marca d'água do símbolo Aquila, atrás do mascote */
+.hero-art .art-mark{position:absolute;z-index:1;width:min(42%,190px);height:auto;top:0;right:0;
+  opacity:.07;transform:rotate(-6deg);pointer-events:none}
+.hero-chip{position:absolute;z-index:3;display:flex;align-items:center;gap:.5rem;font-size:.78rem;
+  background:rgba(5,8,26,.86);border:1px solid var(--line-2);border-radius:12px;padding:.55rem .8rem;
+  backdrop-filter:blur(8px);white-space:nowrap}
+.hero-chip b{font-family:var(--f-display);color:#7CF0B6}
+.chip-a{top:6%;left:0}
+.chip-b{bottom:22%;right:-2%}
+
+/* Selos dos marketplaces flutuando ao redor do mascote.
+   Os arquivos de logo vêm com fundo sólido e muita margem em volta, então o
+   enquadramento é feito aqui: background-size amplia a arte até o logo ocupar
+   ~55% da altura da pílula, e background-color repete o fundo do arquivo para
+   cobrir as sobras laterais. --mkh controla a escala dos três de uma vez. */
+.mk{--mkh:46px;position:absolute;z-index:3;height:var(--mkh);border-radius:999px;
+  background-repeat:no-repeat;background-position:center;
+  box-shadow:0 14px 30px rgba(2,5,20,.45);animation:mkFloat 6s ease-in-out infinite}
+.mk-amz{width:calc(var(--mkh)*2.37);top:20%;left:-4%;animation-delay:-.6s;
+  background-color:#fff;background-image:url("assets/logo-amazon.webp");background-size:auto 100%}
+.mk-sp{width:calc(var(--mkh)*2.17);top:50%;right:-6%;animation-delay:-2.4s;
+  background-image:url("assets/logo-shopee.webp");background-size:auto 114%}
+.mk-ml{width:calc(var(--mkh)*2.61);bottom:6%;left:-6%;animation-delay:-4.1s;
+  background-color:var(--ml-yellow);background-image:url("assets/logo-mercado-livre.webp");
+  background-size:auto 275%}
+@keyframes mkFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+@media(prefers-reduced-motion:reduce){.mk{animation:none}}
+
+@media(max-width:700px){
+  .hero-art{order:-1;margin-bottom:1rem}
+  .hero-art .peng-photo{width:min(78%,300px)}
+  .hero-art .art-mark{width:62%;right:2%}
+  .chip-a{left:-4px}.chip-b{right:-4px}
+  .mk{--mkh:34px;box-shadow:0 10px 20px rgba(2,5,20,.4)}
+  .mk-amz{left:-2%;top:16%}.mk-sp{right:-2%}.mk-ml{left:-2%;bottom:2%}
+}
+
+/* mascote em linha, ao lado de textos de apoio (oferta e formulario) */
+.mascote-inline{display:block;flex:none;width:clamp(96px,14vw,130px);height:auto;
+  filter:drop-shadow(0 18px 26px rgba(2,5,20,.5))}
+
+/* ===== 7. MARQUEE ================================================ */
+.marquee{overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  background:rgba(5,8,26,.4);padding:1rem 0;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);
+  mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.mq-track{display:flex;width:max-content;gap:2.4rem;animation:slide 38s linear infinite}
+.marquee.slow .mq-track{animation-duration:52s}
+.marquee:hover .mq-track{animation-play-state:paused}
+.mq-track span{font-family:var(--f-display);font-size:.95rem;font-weight:600;color:var(--muted);
+  white-space:nowrap;display:flex;align-items:center;gap:2.4rem}
+.mq-track span::after{content:"";width:5px;height:5px;border-radius:50%;background:var(--electric)}
+@keyframes slide{to{transform:translateX(-50%)}}
+
+/* faixa branca dos canais */
+.channels{background:#fff;color:#0A1440;padding:1.3rem 0}
+.channels .wrap{display:flex;align-items:center;justify-content:center;gap:clamp(1rem,4vw,3rem);flex-wrap:wrap}
+.channels b{font-family:var(--f-display);font-weight:700;font-size:clamp(1rem,2vw,1.25rem);opacity:.85}
+.channels em{font-style:normal;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;font-weight:600;opacity:.45}
+
+/* ===== 8. LISTAS ================================================= */
+.checks{list-style:none;padding:0;margin:0;display:grid;gap:.8rem}
+@media(min-width:620px){.checks.two{grid-template-columns:1fr 1fr;gap:.8rem 1.6rem}}
+.checks li{display:flex;gap:.7rem;align-items:flex-start;font-size:.98rem}
+.checks svg{flex:0 0 auto;margin-top:.3rem}
+
+/* camadas do sistema */
+.layers{list-style:none;padding:0;margin:0;counter-reset:l}
+.layers li{counter-increment:l;display:grid;grid-template-columns:auto 1fr;gap:1.1rem;
+  padding:1.4rem 0;border-bottom:1px solid var(--line)}
+.layers li:first-child{border-top:1px solid var(--line)}
+.layers li::before{content:counter(l,decimal-leading-zero);font-family:var(--f-display);font-weight:800;
+  font-size:.85rem;color:var(--electric-soft);padding-top:.25rem}
+.layers h3{margin-bottom:.25rem}
+.layers p{margin:0;font-size:.95rem;color:var(--muted)}
+
+/* ===== 9. CARDS ================================================= */
+.pill{display:inline-block;font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--electric-soft);font-weight:600;margin-bottom:.7rem}
+.card[hidden]{display:none}
+
+/* ===== 10. RESULTADOS — depoimentos =============================== */
+.quote{min-width:300px;max-width:360px;flex:0 0 auto;border:1px solid var(--line);border-radius:16px;
+  padding:1.4rem;background:rgba(10,20,64,.55);white-space:normal}
+.quote p{font-size:.98rem;margin:0 0 .7rem;color:#fff}
+.quote cite{font-style:normal;font-size:.82rem;color:var(--muted)}
+
+/* ===== 11. OFERTA BLACK FRIDAY =================================== */
+.bf{background:radial-gradient(900px 520px at 50% 0%,rgba(46,123,232,.22),transparent 62%),var(--bf-black);
+  border:1px solid rgba(46,123,232,.32)}
+/* O formulario agora fica ao lado do card de preco. Alinha os dois pelo
+   topo e deixa o form acompanhar a altura da coluna. */
+.bf .split{align-items:start}
+.bf #formHost{position:sticky;top:calc(var(--nav-h) + 1.2rem)}
+.bf .form-card{border-color:rgba(46,123,232,.42)}
+@media(max-width:959px){.bf #formHost{position:static}}
+
+/* faixa "Por que fechar antes": largura total, 3 colunas no desktop */
+.bf-porque{margin-top:clamp(2.5rem,5vw,4rem);padding-top:clamp(2rem,4vw,3rem);
+  border-top:1px solid var(--line)}
+.bf-porque>h3{font-size:clamp(1.2rem,2.4vw,1.6rem);margin-bottom:1.4rem}
+.layers.tri li:first-child{border-top:1px solid var(--line)}
+@media(min-width:900px){
+  .layers.tri{display:grid;grid-template-columns:repeat(3,1fr);gap:0 2rem}
+  .layers.tri li{border-bottom:0;align-content:start}
+  .layers.tri li:first-child{border-top:0}
+  .layers.tri li+li{border-left:1px solid var(--line);padding-left:1.8rem}
+}
+.bf-nota{display:flex;gap:1.2rem;align-items:center;flex-wrap:wrap;margin-top:1.6rem}
+.bf-nota p{margin:0;max-width:46ch;color:var(--muted)}
+
+.bf-card{position:relative;overflow:hidden;border:1px solid rgba(46,123,232,.42);border-radius:24px;
+  background:linear-gradient(170deg,#0B0D1C,#05060F 72%);padding:clamp(1.6rem,3.6vw,2.8rem);
+  box-shadow:0 40px 90px -50px rgba(46,123,232,.9)}
+.bf-flag{position:absolute;top:24px;right:-64px;transform:rotate(38deg);
+  background:linear-gradient(90deg,#1B3FA8,#2E7BE8);color:#fff;font-family:var(--f-display);
+  font-weight:800;font-size:.7rem;letter-spacing:.2em;padding:.5rem 4.6rem;box-shadow:0 8px 24px -10px #000}
+.price{display:flex;align-items:flex-end;gap:1rem;flex-wrap:wrap;margin:.3rem 0 .2rem}
+.price s{color:var(--muted);font-size:1.1rem}
+.off{background:linear-gradient(135deg,#2E7BE8,#1B3FA8);color:#fff;font-family:var(--f-display);
+  font-weight:800;font-size:.85rem;padding:.3rem .75rem;border-radius:8px}
+.price-big{font-family:var(--f-display);font-weight:800;letter-spacing:-.035em;
+  font-size:clamp(3rem,9vw,4.4rem);line-height:.9;color:#fff}
+.price-big small{font-size:.26em;font-weight:600;letter-spacing:0;color:var(--muted);margin-left:.3rem}
+.count{display:flex;gap:.55rem;flex-wrap:wrap;margin:1.5rem 0}
+.count div{flex:1 1 70px;min-width:70px;text-align:center;padding:.75rem .3rem;border-radius:12px;
+  background:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.01));
+  border:1px solid rgba(46,123,232,.45);box-shadow:inset 0 0 22px rgba(46,123,232,.16)}
+.count b{display:block;font-family:var(--f-display);font-weight:800;color:#fff;line-height:1;
+  font-size:clamp(1.5rem,4.6vw,2.1rem);font-variant-numeric:tabular-nums}
+.count i{font-style:normal;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.vagas-top{display:flex;justify-content:space-between;font-size:.85rem;margin-bottom:.45rem}
+.bar{height:8px;border-radius:99px;background:rgba(255,255,255,.08);overflow:hidden}
+.bar i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,#2E7BE8,#6FA8F5)}
+.lock{display:flex;gap:.75rem;align-items:center;padding:.85rem 1rem;border-radius:12px;
+  border:1px solid rgba(46,123,232,.4);background:rgba(46,123,232,.1);font-size:.9rem;margin:1.3rem 0}
+
+/* ===== 12. FAQ ================================================== */
+.faq{border-bottom:1px solid var(--line)}
+.faq summary{list-style:none;padding:1.25rem 3rem 1.25rem 0;position:relative;
+  font-family:var(--f-display);font-weight:600;font-size:1.02rem;color:#fff}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";position:absolute;right:.4rem;top:50%;transform:translateY(-50%);
+  font-size:1.4rem;color:var(--electric-soft)}
+.faq[open] summary::after{content:"–"}
+.faq p{color:var(--muted);font-size:.96rem;padding-bottom:1.3rem;margin:0}
+
+/* ===== 13. FORMULÁRIO E MODAL =================================== */
+.form-card{border:1px solid var(--line-2);border-radius:20px;padding:clamp(1.3rem,2.8vw,2rem);
+  background:linear-gradient(170deg,rgba(16,28,78,.94),rgba(8,14,44,.96))}
+.field{margin-bottom:.95rem}
+.field label{display:block;font-size:.84rem;font-weight:600;margin-bottom:.35rem}
+.field input,.field select,.field textarea{width:100%;padding:.88rem 1rem;border-radius:10px;
+  border:1px solid var(--line);background:rgba(5,8,26,.75);color:#fff;font-family:var(--f-text);font-size:1rem}
+.field textarea{min-height:82px;resize:vertical}
+.field select{appearance:none;background-image:linear-gradient(45deg,transparent 50%,var(--electric-soft) 50%),
+  linear-gradient(135deg,var(--electric-soft) 50%,transparent 50%);
+  background-position:calc(100% - 20px) 50%,calc(100% - 14px) 50%;background-size:6px 6px;background-repeat:no-repeat}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--electric);outline:none;
+  box-shadow:0 0 0 3px rgba(46,123,232,.25)}
+.field .err{display:none;color:#FF9B9B;font-size:.79rem;margin-top:.3rem}
+.field.invalid .err{display:block}
+.field.invalid input,.field.invalid select{border-color:#FF9B9B}
+.two-col{display:grid;gap:0 1rem}
+@media(min-width:640px){.two-col{grid-template-columns:1fr 1fr}}
+.check{display:flex;gap:.7rem;align-items:flex-start;font-size:.88rem;margin:1rem 0 .3rem}
+.check input{width:20px;height:20px;flex:0 0 auto;margin-top:.15rem;accent-color:var(--electric)}
+.hp{position:absolute;left:-9999px;width:0;height:0;opacity:0}
+
+/* ===== LIGHTBOX DOS PRINTS ====================================== */
+.lb{position:fixed;inset:0;z-index:95;display:none;align-items:center;justify-content:center;
+  gap:clamp(.4rem,2vw,1.4rem);width:100%;max-width:100%;height:100%;max-height:100%;
+  padding:clamp(.8rem,3vw,2rem);border:0;background:transparent;overflow:hidden}
+.lb[open]{display:flex}
+.lb::backdrop{background:rgba(3,6,20,.92);backdrop-filter:blur(6px)}
+.lb-fig{margin:0;flex:1 1 auto;min-width:0;display:flex;flex-direction:column;
+  align-items:center;gap:.9rem;animation:lbIn .28s cubic-bezier(.2,.8,.3,1)}
+.lb-fig img{display:block;max-width:100%;max-height:78vh;width:auto;height:auto;
+  border-radius:14px;background:#fff;box-shadow:0 30px 70px rgba(0,0,0,.55)}
+.lb-fig figcaption{display:flex;align-items:center;gap:.7rem;flex-wrap:wrap;justify-content:center;
+  color:rgba(255,255,255,.76);font-size:.86rem;text-align:center;max-width:70ch}
+.lb-canal{font-family:var(--f-display);font-weight:700;font-size:.66rem;letter-spacing:.14em;
+  text-transform:uppercase;color:#fff;border:1px solid rgba(255,255,255,.28);
+  border-radius:999px;padding:.26rem .7rem}
+.lb-btn{flex:none;display:grid;place-items:center;border-radius:50%;cursor:pointer;color:#fff;
+  border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.1);
+  width:46px;height:46px;font-size:1.5rem;line-height:1;transition:background .2s,transform .2s}
+.lb-btn:hover{background:rgba(255,255,255,.2);transform:scale(1.06)}
+.lb-x{position:absolute;top:clamp(.8rem,2vw,1.4rem);right:clamp(.8rem,2vw,1.4rem);
+  width:40px;height:40px;font-size:1rem;z-index:2}
+@keyframes lbIn{from{opacity:0;transform:scale(.96)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){.lb-fig{animation:none}.lb-btn{transition:none}}
+@media(max-width:640px){
+  .lb{flex-wrap:wrap}
+  .lb-fig{order:-1;flex-basis:100%}
+  .lb-fig img{max-height:64vh}
+  .lb-btn{width:42px;height:42px}
+}
+
+.modal{position:fixed;inset:0;z-index:90;display:none;align-items:center;justify-content:center;
+  padding:1rem;width:100%;max-width:100%;height:100%;max-height:100%;border:0;background:transparent;color:var(--ink)}
+.modal[open]{display:flex}
+.modal::backdrop{background:rgba(3,6,20,.82)}
+.modal-box{width:min(100%,560px);max-height:88vh;overflow:auto;border-radius:20px;
+  border:1px solid var(--line-2);background:linear-gradient(170deg,#0E1846,#070C28);
+  padding:clamp(1.3rem,3vw,2rem);position:relative}
+.modal-close{position:absolute;top:.9rem;right:.9rem;width:36px;height:36px;border-radius:50%;
+  border:1px solid var(--line);background:rgba(255,255,255,.06);color:#fff;font-size:1.1rem;line-height:1}
+
+/* ===== 14. FAIXA CTA + RODAPÉ =================================== */
+.band{background:linear-gradient(120deg,rgba(27,63,168,.55),rgba(46,123,232,.22));
+  border:1px solid var(--line-2)}
+.band .wrap{display:grid;gap:2rem;align-items:center}
+@media(min-width:880px){.band .wrap{grid-template-columns:1.2fr auto}}
+footer{border-top:1px solid var(--line);background:rgba(5,8,26,.6);padding:2.2rem 0 6.5rem;font-size:.86rem;color:var(--muted)}
+@media(min-width:780px){footer{padding-bottom:2.2rem}}
+.foot{display:flex;flex-wrap:wrap;gap:.6rem 1.4rem;align-items:center;justify-content:space-between}
+footer a{text-decoration:none}
+footer a:hover{color:#fff}
+
+/* flutuantes */
+.wa{position:fixed;right:16px;bottom:calc(80px + env(safe-area-inset-bottom,0px));z-index:70;
+  width:54px;height:54px;border-radius:50%;display:grid;place-items:center;background:#25D366;
+  box-shadow:0 12px 30px -10px rgba(0,0,0,.8)}
+.sticky{position:fixed;left:0;right:0;bottom:0;z-index:71;padding:.65rem 1rem calc(.65rem + env(safe-area-inset-bottom,0px));
+  background:rgba(5,6,15,.94);border-top:1px solid rgba(46,123,232,.4);backdrop-filter:blur(10px)}
+.sticky .btn{width:100%;padding:.9rem;font-size:.95rem}
+@media(min-width:780px){.sticky{display:none}.wa{bottom:calc(20px + env(safe-area-inset-bottom,0px))}}
+
+
+/* ===== 14b. SEÇÕES CLARAS ======================================= */
+.checks svg,.lock svg{color:var(--electric-soft)}
+section.light{
+  background:#F3F6FD;color:#16234F;
+  --ink:#16234F;--muted:#5A678F;--line:rgba(14,26,69,.13);--line-2:rgba(14,26,69,.22);
+  --glass:linear-gradient(165deg,#fff,#F9FBFF);
+}
+section.light+section.light{border-top:1px solid rgba(14,26,69,.08)}
+section.light h2{color:#3A4874}
+section.light h1 b,section.light h2 b,section.light h3,section.light strong,section.light .stat b{color:#0A1440}
+section.light .eyebrow{color:#1B3FA8;background:rgba(27,63,168,.07);border-color:rgba(27,63,168,.24)}
+section.light .card{box-shadow:0 14px 34px -28px rgba(10,20,64,.75)}
+section.light .media{border-color:rgba(14,26,69,.16);color:#5A678F;
+  background:repeating-linear-gradient(135deg,rgba(10,20,64,.05) 0 14px,transparent 14px 28px),
+  linear-gradient(160deg,#E6EDFB,#D8E3F7)}
+section.light .btn-ghost{color:#0A1440;border-color:rgba(14,26,69,.25)}
+section.light .pill{color:#1B3FA8}
+section.light .checks svg,section.light .layers li::before{color:#1B3FA8}
+section.light .quote{background:#fff;border-color:rgba(14,26,69,.12)}
+section.light .quote p{color:#0A1440}
+section.light .marquee{background:transparent;border-color:rgba(14,26,69,.12)}
+#resultados .media{min-height:260px}
+section.light .faq summary{color:#0A1440}
+section.light .faq summary::after{color:#1B3FA8}
+
+/* ===== 14c. CANTOS ARREDONDADOS NAS TROCAS DE FUNDO ============= */
+:root{--r-sec:clamp(26px,4.2vw,52px)}
+section.light,section.bf,section.band{border-radius:var(--r-sec)}
+.channels{border-radius:var(--r-sec) var(--r-sec) 0 0}
+#paraquem{border-radius:0 0 var(--r-sec) var(--r-sec);margin-top:-1px}
+section.light+section.light{border-top:0}
+.marquee:first-of-type{border-radius:var(--r-sec) var(--r-sec) 0 0;border-bottom:0}
+
+
+/* ===== 14d. COR DOS MARKETPLACES NAS SEÇÕES CLARAS ============== */
+:root{--ml-yellow:#FFE600;--ml-blue:#2D3277;--shopee:#EE4D2D;--amz-orange:#FF9900;--amz-dark:#232F3E}
+
+/* faixa dos canais: cada marca na sua cor */
+.channels{position:relative}
+.channels b{padding:.45rem 1.1rem;border-radius:999px;opacity:1;font-size:clamp(.88rem,1.8vw,1.08rem)}
+.channels b.ml{background:var(--ml-yellow);color:var(--ml-blue)}
+.channels b.sp{background:var(--shopee);color:#fff}
+.channels b.az{background:var(--amz-dark);color:var(--amz-orange)}
+
+/* linha de cor no topo de cada bloco claro */
+section.light::before,.channels::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;
+  border-radius:var(--r-sec) var(--r-sec) 0 0;
+  background:linear-gradient(90deg,var(--ml-yellow) 0%,var(--shopee) 42%,var(--amz-orange) 72%,var(--ml-blue) 100%)}
+#paraquem::before{display:none}
+
+/* brilho suave das cores no fundo claro */
+section.light{background-image:
+  radial-gradient(620px 320px at 8% 0%,rgba(255,230,0,.18),transparent 62%),
+  radial-gradient(560px 340px at 94% 4%,rgba(238,77,45,.10),transparent 60%),
+  radial-gradient(520px 420px at 58% 100%,rgba(45,50,119,.08),transparent 62%)}
+
+/* traço de cor no topo dos cards claros */
+section.light .card{position:relative;overflow:hidden}
+section.light .card::after{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--mk,#1B3FA8)}
+/* "Para quem e": retrato do lojista ao lado do cabecalho.
+   No mobile ele entra no fluxo, alinhado a direita; a partir de 960px passa a
+   flutuar no canto, subindo um pouco dentro do padding da secao. */
+.pq-top{position:relative}
+.pq-foto{display:block;height:clamp(200px,44vw,270px);width:auto;
+  margin:.4rem -1rem -.6rem auto;pointer-events:none}
+@media(min-width:960px){
+  .pq-top{min-height:clamp(380px,38vw,520px)}
+  .pq-top .head{max-width:min(52%,56ch)}
+  .pq-foto{position:absolute;right:0;bottom:0;margin:0;
+    height:calc(100% + clamp(1.5rem,3vw,3rem));max-width:46%;object-fit:contain;
+    object-position:bottom right}
+}
+
+#paraquem .card:nth-child(1){--mk:var(--ml-yellow)}
+#paraquem .card:nth-child(2){--mk:var(--shopee)}
+#paraquem .card:nth-child(3){--mk:var(--amz-orange)}
+#paraquem .card:nth-child(4){--mk:var(--ml-blue)}
+
+/* etiqueta do canal nos prints */
+.mkt{display:inline-block;padding:.26rem .75rem;border-radius:999px;font-family:var(--f-display);
+  font-size:.66rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;margin-bottom:.5rem}
+.mkt.ml{background:var(--ml-yellow);color:var(--ml-blue)}
+.mkt.sp{background:var(--shopee);color:#fff}
+.mkt.az{background:var(--amz-dark);color:var(--amz-orange)}
+#resultados .media.sp{border-color:rgba(238,77,45,.34)}
+#resultados .media.ml{border-color:rgba(45,50,119,.28)}
+#resultados .media.az{border-color:rgba(255,153,0,.38)}
+
+/* numeração do sistema em camadas com as cores dos canais */
+#sistema .layers li:nth-child(1)::before{color:var(--ml-blue)}
+#sistema .layers li:nth-child(2)::before{color:var(--shopee)}
+#sistema .layers li:nth-child(3)::before{color:#C9A200}
+#sistema .layers li:nth-child(4)::before{color:var(--amz-orange)}
+
+
+/* títulos em degradê com as cores dos canais (só nas seções claras) */
+section.light h2 b{
+  background:linear-gradient(100deg,var(--ml-blue) 0%,#1B3FA8 24%,var(--shopee) 62%,#B86B00 100%);
+  -webkit-background-clip:text;background-clip:text;
+  color:transparent;-webkit-text-fill-color:transparent}
+@supports not ((background-clip:text) or (-webkit-background-clip:text)){
+  section.light h2 b{color:var(--ml-blue);-webkit-text-fill-color:currentColor}}
+
+/* ===== 15. ANIMAÇÃO ============================================= */
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .55s ease,transform .55s ease}
+.reveal.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){
+  .reveal{opacity:1;transform:none;transition:none}
+  .mq-track{animation:none}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+
+<!-- fundo -->
+<div class="bg" aria-hidden="true"></div>
+<svg class="bg-net" aria-hidden="true" preserveAspectRatio="none" viewBox="0 0 1200 800">
+  <g stroke="rgba(125,163,255,.2)" fill="none">
+    <path d="M-20 140 L240 260 L520 180 L760 300 L1020 210 L1240 320"/>
+    <path d="M-20 430 L180 520 L480 440 L700 560 L980 470 L1240 580"/>
+    <path d="M240 260 L180 520 M520 180 L480 440 M760 300 L700 560 M1020 210 L980 470"/>
+  </g>
+  <g fill="rgba(111,168,245,.5)">
+    <circle cx="240" cy="260" r="3.5"/><circle cx="520" cy="180" r="3.5"/><circle cx="760" cy="300" r="3.5"/>
+    <circle cx="1020" cy="210" r="3.5"/><circle cx="180" cy="520" r="3.5"/><circle cx="480" cy="440" r="3.5"/>
+    <circle cx="700" cy="560" r="3.5"/><circle cx="980" cy="470" r="3.5"/>
+  </g>
+</svg>
+
+<!-- SVGs reutilizáveis: logo, mascote e ícones -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <!-- O simbolo da marca nao fica aqui: e o arquivo oficial
+       assets/simbolo-aquila.webp, usado via <img class="mark"> -->
+
+
+
+  <symbol id="ck" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="al" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 7.5v6M12 16.6v.1" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol>
+  <symbol id="wa" viewBox="0 0 24 24"><path fill="#fff" d="M12.04 2C6.6 2 2.2 6.4 2.2 11.84c0 1.94.52 3.76 1.44 5.32L2 22l4.98-1.6a9.8 9.8 0 0 0 5.06 1.4c5.44 0 9.84-4.4 9.84-9.84S17.48 2 12.04 2m0 17.8c-1.62 0-3.12-.44-4.4-1.2l-.32-.18-2.96.94.96-2.88-.2-.34a8 8 0 0 1-1.26-4.3c0-4.42 3.6-8.02 8.04-8.02s8.02 3.6 8.02 8.02-3.6 8.02-8.02 8.02zm4.52-5.98c-.24-.12-1.46-.72-1.68-.8s-.4-.12-.56.12-.64.8-.78.96-.28.18-.52.06a6.6 6.6 0 0 1-1.94-1.2 7.3 7.3 0 0 1-1.34-1.68c-.14-.24 0-.36.1-.48.12-.12.24-.28.36-.42.12-.14.16-.24.24-.4s.04-.3-.02-.42-.56-1.34-.76-1.84c-.2-.48-.4-.42-.56-.42h-.48c-.16 0-.42.06-.64.3s-.84.82-.84 2 .86 2.32.98 2.48 1.7 2.6 4.12 3.64c.58.25 1.03.4 1.38.51.58.18 1.1.16 1.52.1.46-.07 1.46-.6 1.66-1.18s.2-1.06.14-1.16-.22-.18-.46-.3"/></symbol>
+</defs></svg>
+
+<!-- ============ HEADER ============ -->
+<header class="nav">
+  <div class="wrap">
+    <a class="logo" href="#topo" aria-label="Aquila Marketing Digital">
+      <img class="mark" src="assets/simbolo-aquila.webp" alt="" width="1097" height="1434">
+      <span>Aquila<small>MARKETING DIGITAL</small></span>
+    </a>
+    <nav class="nav-links">
+      <a href="#problema">O problema</a>
+      <a href="#sistema">Como trabalhamos</a>
+      <a href="#resultados">Resultados</a>
+      <a href="#oferta">Black Friday</a>
+    </nav>
+    <button class="btn btn-sm" data-form data-cta="header">Análise gratuita</button>
+  </div>
+</header>
+
+<!-- ============ 1. HERO ============ -->
+<section class="hero" id="topo">
+  <div class="wrap split">
+    <div class="reveal">
+      <span class="eyebrow">Para lojistas que vendem em marketplace</span>
+      <h1>Sua loja já vende no marketplace. <b>Falta o lucro acompanhar o faturamento.</b></h1>
+      <p class="lead">Assessoria para donos de loja do varejo que vendem em Mercado Livre, Shopee e Amazon.
+      Cuidamos da margem por produto, do ads, do ranqueamento dos anúncios e do operacional que consome o seu dia —
+      com um especialista no seu WhatsApp.</p>
+      <div class="hero-cta">
+        <button class="btn" data-form data-cta="hero">Quero minha análise gratuita</button>
+        <a class="btn btn-ghost" href="#resultados">Ver resultados reais</a>
+      </div>
+      <p class="micro">Sem compromisso · Resposta em até 2h úteis · Dados protegidos (LGPD)</p>
+
+      <div class="stats">
+        <div class="stat"><b class="n">+800</b><span>contas de lojistas já gerenciadas</span></div>
+        <div class="stat"><b class="n">R$ 10,6 mi</b><span>em vendas geradas nas contas atendidas</span></div>
+      </div>
+    </div>
+
+    <div class="hero-art reveal" aria-hidden="true">
+      <img class="art-mark" src="assets/simbolo-aquila.webp" alt="" width="1097" height="1434">
+
+      <img class="peng-photo" src="assets/mascote-aquila.webp" alt=""
+           width="1101" height="1428" fetchpriority="high" decoding="async">
+
+      <div class="hero-chip chip-a"><b>▲ 49,3%</b> Mercado Livre</div>
+      <div class="hero-chip chip-b"><b>ACOS</b> sob controle</div>
+
+      <!-- selos dos canais atendidos (logos oficiais, enquadrados via CSS) -->
+      <div class="mk mk-amz" role="img" aria-label="Amazon"></div>
+      <div class="mk mk-sp" role="img" aria-label="Shopee"></div>
+      <div class="mk mk-ml" role="img" aria-label="Mercado Livre"></div>
+    </div>
+  </div>
+</section>
+
+<!-- marquee de temas -->
+<div class="marquee" aria-hidden="true">
+  <div class="mq-track">
+    <span>Mercado Ads</span><span>Shopee Ads</span><span>Amazon Ads</span><span>Buy Box</span>
+    <span>ACOS e TACOS</span><span>Ranqueamento</span><span>Full e FBA</span><span>Margem por SKU</span>
+    <span>Reputação</span><span>Precificação</span><span>Catálogo</span><span>Giro de estoque</span><span>Concorrência</span>
+    <span>Mercado Ads</span><span>Shopee Ads</span><span>Amazon Ads</span><span>Buy Box</span>
+    <span>ACOS e TACOS</span><span>Ranqueamento</span><span>Full e FBA</span><span>Margem por SKU</span>
+    <span>Reputação</span><span>Precificação</span><span>Catálogo</span><span>Giro de estoque</span><span>Concorrência</span>
+  </div>
+</div>
+
+<!-- faixa branca dos canais -->
+<div class="channels">
+  <div class="wrap">
+    <em>Assessoria especializada em</em><b class="ml">Mercado Livre</b><b class="sp">Shopee</b><b class="az">Amazon</b>
+  </div>
+</div>
+
+<!-- ============ 2. PARA QUEM É ============ -->
+<section id="paraquem" class="light">
+  <div class="wrap">
+    <div class="pq-top">
+      <div class="head reveal">
+        <span class="eyebrow">Para quem é</span>
+        <h2>Feito para <b>dono de loja do varejo que vende dentro do marketplace.</b></h2>
+        <p class="lead">Se a sua loja já tem produto, estoque e fornecedor, o trabalho começa no primeiro dia.
+        Atendemos de quem está começando do zero a quem já passa de R$ 100 mil por mês no canal.</p>
+      </div>
+      <img class="pq-foto" src="assets/lojista-apontando.webp" alt=""
+           width="1166" height="1349" loading="lazy" decoding="async">
+    </div>
+
+    <div class="grid g4 reveal">
+      <div class="card"><span class="pill">Perfil 01</span><h3>Loja física que migrou para o online</h3>
+        <p>Você conhece a margem no balcão, mas no marketplace o preço, a taxa e o frete embaralham a conta.</p></div>
+      <div class="card"><span class="pill">Perfil 02</span><h3>Loja que vive do marketplace</h3>
+        <p>Todo o faturamento depende do canal. Qualquer oscilação de ACOS, ranqueamento ou reputação bate direto no caixa.</p></div>
+      <div class="card"><span class="pill">Perfil 03</span><h3>Revenda e distribuição</h3>
+        <p>Catálogo grande, muitos produtos e guerra de preço. O desafio é descobrir onde está o lucro de verdade.</p></div>
+      <div class="card"><span class="pill">Perfil 04</span><h3>Marca própria</h3>
+        <p>Produto seu, ficha sua. Aqui o ganho vem de ranqueamento, conteúdo de anúncio e defesa de preço.</p></div>
+    </div>
+
+    <p class="reveal" style="margin:2rem 0 0;max-width:72ch"><strong>Não faz sentido</strong> se você procura curso,
+    fórmula pronta, promessa de faturamento garantido ou não pretende investir nada em anúncio dentro dos canais.</p>
+  </div>
+</section>
+
+<!-- ============ 3. O PROBLEMA ============ -->
+<section id="problema">
+  <div class="wrap split">
+    <div class="reveal">
+      <span class="eyebrow">O problema real do lojista</span>
+      <h2>O prejuízo raramente aparece na venda. <b>Ele aparece no fechamento do mês.</b></h2>
+      <p class="lead">Faturamento subindo e lucro parado é o sintoma mais comum de quem tem loja no marketplace.
+      A causa quase nunca é falta de trabalho — é anúncio mal calibrado, margem desconhecida produto a produto e
+      decisão de preço tomada no achismo.</p>
+
+      <p style="margin-bottom:1.2rem"><strong>Quando isso acontece, a loja sente:</strong></p>
+      <ul class="checks two">
+        <li><svg width="19" height="19"><use href="#al"/></svg>Margem consumida por taxas, frete e ads</li>
+        <li><svg width="19" height="19"><use href="#al"/></svg>ACOS e TACOS altos, verba queimando</li>
+        <li><svg width="19" height="19"><use href="#al"/></svg>Anúncio sem ranquear e sem Buy Box</li>
+        <li><svg width="19" height="19"><use href="#al"/></svg>Reputação e conta sob risco</li>
+        <li><svg width="19" height="19"><use href="#al"/></svg>Ruptura e estoque parado no Full</li>
+        <li><svg width="19" height="19"><use href="#al"/></svg>Nenhuma clareza de qual produto dá lucro</li>
+        <li><svg width="19" height="19"><use href="#al"/></svg>Agência generalista que não entende o canal</li>
+        <li><svg width="19" height="19"><use href="#al"/></svg>Dia inteiro no operacional, zero estratégia</li>
+      </ul>
+
+      <p style="margin-top:1.6rem">Ajustar a conta antes do pico de vendas custa muito menos do que consertar
+      prejuízo depois. Se a sua loja se identifica com dois desses pontos, precisamos conversar.</p>
+      <button class="btn" data-form data-cta="problema">Quero minha análise gratuita</button>
+    </div>
+
+    <!-- Apresentação em vídeo. O arquivo certo (horizontal ou vertical) é
+         escolhido por JS conforme a largura da tela — ver bloco "Vídeo". -->
+    <figure class="vframe reveal">
+      <div class="vplayer">
+        <video id="vApres" preload="none" playsinline
+               poster="assets/video-poster-desktop.jpg"
+               data-desk="assets/video-desktop.mp4"  data-desk-poster="assets/video-poster-desktop.jpg"
+               data-mob="assets/video-mobile.mp4"    data-mob-poster="assets/video-poster-mobile.jpg">
+          <source src="assets/video-desktop.mp4" type="video/mp4">
+          Seu navegador não reproduz vídeo.
+          <a href="assets/video-desktop.mp4">Baixar a apresentação</a>.
+        </video>
+        <button class="vplay" type="button" aria-label="Assistir à apresentação">
+          <svg viewBox="0 0 24 24" width="30" height="30" aria-hidden="true">
+            <path d="M8 5.2v13.6L19 12z" fill="currentColor"/>
+          </svg>
+        </button>
+      </div>
+      <figcaption>
+        <strong>Como a gente trabalha</strong>
+        <span>Nicolas Tasso explica o método em menos de um minuto</span>
+      </figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ============ 3. SISTEMA EM CAMADAS ============ -->
+<section id="sistema" class="light">
+  <div class="wrap split" style="grid-template-columns:none">
+    <div class="head reveal" style="margin-bottom:0">
+      <span class="eyebrow">Sistema, não ação isolada</span>
+      <h2>Cada camada tem uma função. <b>Nenhuma é opcional.</b></h2>
+      <p class="lead">Mexer só no anúncio, só no preço ou só na campanha faz o resultado subir um mês e cair no
+      seguinte. Veja como montamos a operação de uma loja que cresce e mantém margem.</p>
+    </div>
+  </div>
+
+  <div class="wrap split" style="margin-top:clamp(2rem,4vw,3rem)">
+    <ol class="layers reveal">
+      <li><div><h3>Margem real produto a produto</h3><p>Antes de qualquer campanha: custo de compra, taxa do canal, frete,
+      devolução e imposto. É esse número que define quanto o seu anúncio pode pagar por venda.</p></div></li>
+      <li><div><h3>Leitura da concorrência</h3><p>Quem está na sua frente, com qual preço, qual ficha e qual
+      volume. Replicamos o que funciona no canal e atacamos onde o concorrente está fraco.</p></div></li>
+      <li><div><h3>Anúncio otimizado e ranqueado</h3><p>Título, ficha técnica, imagem, variações e preço
+      trabalhados para posição orgânica — o que reduz a dependência de ads no médio prazo.</p></div></li>
+      <li><div><h3>Ads calibrado pela sua margem</h3><p>Verba concentrada no produto que dá lucro, ACOS e TACOS
+      monitorados por campanha. Product Ads, Mercado Ads, Shopee Ads, Amazon Ads, Google e Meta.</p></div></li>
+      <li><div><h3>Rotina da conta sob controle</h3><p>Reputação, perguntas, estoque no Full e prazos
+      acompanhados de perto, com painel de vendas e margem atualizado. A loja escala sem consumir o seu dia.</p></div></li>
+    </ol>
+
+    <img class="ilustra reveal" src="assets/ilustracao-camadas.webp" alt=""
+         width="1086" height="1448" loading="lazy" decoding="async">
+  </div>
+</section>
+
+<!-- ============ 5. MÉTODO ============ -->
+<section id="metodo">
+  <div class="wrap">
+    <div class="head reveal">
+      <span class="eyebrow">Como funciona</span>
+      <h2>Do primeiro contato à escala, <b>em quatro etapas.</b></h2>
+    </div>
+    <div class="grid g4 reveal">
+      <div class="card"><span class="pill">Etapa 01</span><h3>Análise gratuita</h3>
+        <p>Você preenche o formulário, olhamos a conta da sua loja e a concorrência e respondemos em até 2h úteis.</p></div>
+      <div class="card"><span class="pill">Etapa 02</span><h3>Diagnóstico e plano</h3>
+        <p>Margem por produto, saúde dos anúncios, posição frente ao concorrente e o que está drenando verba.</p></div>
+      <div class="card"><span class="pill">Etapa 03</span><h3>Execução</h3>
+        <p>Anúncios otimizados, campanhas recalibradas, integrações e automações rodando. Reunião semanal.</p></div>
+      <div class="card"><span class="pill">Etapa 04</span><h3>Escala</h3>
+        <p>Com a conta ajustada, aumentamos investimento onde há lucro comprovado e abrimos novos canais.</p></div>
+    </div>
+
+    <div class="reveal" style="margin-top:2.2rem;display:flex;gap:1.2rem;align-items:center;flex-wrap:wrap">
+      <button class="btn" data-form data-cta="metodo">Quero minha análise gratuita</button>
+      <span style="color:var(--muted);font-size:.92rem;max-width:34ch">Reuniões semanais, atendimento no
+      WhatsApp e sem fidelidade — você fica enquanto fizer sentido para a loja.</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 6. RESULTADOS ============ -->
+<section id="resultados" class="light">
+  <div class="wrap">
+    <div class="head reveal">
+      <span class="eyebrow">Resultados reais</span>
+      <h2>Os painéis de lojas que <b>já passaram pela nossa gestão.</b></h2>
+      <p class="lead">Prints direto do painel de cada canal, comparando o período com o intervalo anterior da
+      mesma loja. O resultado depende de produto, preço e estoque — por isso a análise vem antes da proposta.</p>
+    </div>
+
+    <!-- GALERIA DE PRINTS — trocar cada .media pela imagem real do painel.
+         Um print de cada canal: Shopee · Mercado Livre · Amazon -->
+    <div class="grid g3 reveal">
+      <a class="print sp reveal" href="assets/painel-shopee.webp" target="_blank" rel="noopener">
+        <img src="assets/painel-shopee.webp" width="3520" height="1612" loading="lazy" decoding="async"
+             alt="Painel da Shopee no mês: R$ 117.812,98 em vendas e 1.495 pedidos, alta de 413,04% sobre o mês anterior">
+        <span class="mkt sp">Shopee</span>
+        <span class="print-zoom">ampliar</span>
+      </a>
+      <a class="print ml reveal" href="assets/painel-mercado-livre.webp" target="_blank" rel="noopener">
+        <img src="assets/painel-mercado-livre.webp" width="3520" height="2268" loading="lazy" decoding="async"
+             alt="Painel do Mercado Livre: R$ 68.719 em vendas brutas, 1.125 vendas e conversão de 7,7%, com alta de 2.336% sobre o período anterior">
+        <span class="mkt ml">Mercado Livre</span>
+        <span class="print-zoom">ampliar</span>
+      </a>
+      <a class="print az reveal" href="assets/painel-amazon.webp" target="_blank" rel="noopener">
+        <img src="assets/painel-amazon.webp" width="3520" height="1672" loading="lazy" decoding="async"
+             alt="Painel do canal no mês: R$ 642.774,48 em vendas e 737 pedidos, alta de 172,55% sobre o mês anterior">
+        <span class="mkt az">Amazon</span>
+        <span class="print-zoom">ampliar</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- depoimentos em marquee -->
+  <div class="marquee slow" style="margin-top:clamp(2.5rem,5vw,4rem);padding:1.6rem 0">
+    <div class="mq-track" style="gap:1.2rem">
+      <blockquote class="quote"><p>“Nossas vendas estão indo cada dia melhor. Vocês são preciosos!!”</p><cite>Operação de marketplace</cite></blockquote>
+      <blockquote class="quote"><p>“Depois de muito tempo, fizemos 50 envios e tivemos 50 vendas no mesmo dia.”</p><cite>Loja de auto peças · Goiânia</cite></blockquote>
+      <blockquote class="quote"><p>“Em menos de 15 dias trabalhando ativos no Mercado Livre, batemos mais de R$ 20 mil de faturamento.”</p><cite>Seller no Mercado Livre</cite></blockquote>
+      <blockquote class="quote"><p>“1 mês de operação e +30% de aumento nas vendas vs. o mesmo período do mês passado. Nosso principal concorrente teve queda de 6%.”</p><cite>Operação de marketplace</cite></blockquote>
+      <blockquote class="quote"><p>“Nossas vendas estão indo cada dia melhor. Vocês são preciosos!!”</p><cite>Operação de marketplace</cite></blockquote>
+      <blockquote class="quote"><p>“Depois de muito tempo, fizemos 50 envios e tivemos 50 vendas no mesmo dia.”</p><cite>Loja de auto peças · Goiânia</cite></blockquote>
+      <blockquote class="quote"><p>“Em menos de 15 dias trabalhando ativos no Mercado Livre, batemos mais de R$ 20 mil de faturamento.”</p><cite>Seller no Mercado Livre</cite></blockquote>
+      <blockquote class="quote"><p>“1 mês de operação e +30% de aumento nas vendas vs. o mesmo período do mês passado. Nosso principal concorrente teve queda de 6%.”</p><cite>Operação de marketplace</cite></blockquote>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 8. OFERTA BLACK FRIDAY ============ -->
+<section class="bf" id="oferta">
+  <div class="wrap">
+    <div class="head mid reveal">
+      <span class="eyebrow">Black Friday Aquila</span>
+      <h2>40% OFF e <b>o menor valor de entrada do ano.</b></h2>
+      <p class="lead">Quem fecha nesta condição entra pagando R$ 750 em vez de R$ 1.250. Vale enquanto houver
+      vaga — o acompanhamento é próximo, então o número é limitado de verdade.</p>
+    </div>
+
+    <div class="split reveal">
+      <div class="bf-card">
+        <div class="bf-flag">BLACK FRIDAY</div>
+        <p style="margin:0;color:var(--muted);font-size:.9rem">Assessoria completa em marketplace</p>
+        <div class="price"><s class="n">R$ 1.250</s><span class="off">40% OFF</span></div>
+        <div class="price-big n">R$ 750<small>/mês</small></div>
+
+        <div class="lock">
+          <svg width="20" height="20" aria-hidden="true"><use href="#ck"/></svg>
+          <span><strong>Valor de entrada garantido.</strong> Se houver reajuste no futuro, é pequeno e avisado
+          com antecedência.</span>
+        </div>
+
+        <div class="count" id="count" role="timer" aria-label="Tempo restante da oferta">
+          <div><b data-d>00</b><i>dias</i></div><div><b data-h>00</b><i>horas</i></div>
+          <div><b data-m>00</b><i>min</i></div><div><b data-s>00</b><i>seg</i></div>
+        </div>
+
+        <div class="vagas-top"><span>Vagas nesta condição</span><span><strong id="vagasLeft">—</strong> restantes de <span id="vagasTotal">—</span></span></div>
+        <div class="bar"><i id="vagasBar" style="width:0%"></i></div>
+
+        <ul class="checks" style="margin:1.5rem 0">
+          <li><svg width="18" height="18"><use href="#ck"/></svg>Otimização e ranqueamento dos anúncios</li>
+          <li><svg width="18" height="18"><use href="#ck"/></svg>Gestão de ads em todos os canais</li>
+          <li><svg width="18" height="18"><use href="#ck"/></svg>Reuniões semanais de estratégia</li>
+          <li><svg width="18" height="18"><use href="#ck"/></svg>Atendimento direto no WhatsApp</li>
+          <li><svg width="18" height="18"><use href="#ck"/></svg>Estudo da concorrência e revisão de precificação</li>
+          <li><svg width="18" height="18"><use href="#ck"/></svg>Painel de vendas e margem sempre atualizado</li>
+          <li><svg width="18" height="18"><use href="#ck"/></svg>Sem fidelidade e sem contrato longo</li>
+        </ul>
+
+        <button class="btn btn-block" data-form data-cta="oferta">Quero minha análise gratuita</button>
+        <p class="micro">Válida até 30/11/2026 · Sem compromisso · Resposta em até 2h úteis</p>
+      </div>
+
+      <!-- o formulário vive aqui e é movido para o modal quando um CTA é clicado -->
+      <div id="formHost" class="reveal">
+        <form class="form-card" id="leadForm" novalidate>
+          <h3 id="formTitulo" style="font-size:1.25rem;margin-bottom:1.2rem">Solicitar análise gratuita</h3>
+          <div class="two-col">
+            <div class="field"><label for="nome">Seu nome</label>
+              <input id="nome" name="nome" type="text" autocomplete="name" placeholder="Nome e sobrenome" required>
+              <span class="err">Preencha seu nome.</span></div>
+            <div class="field"><label for="zap">WhatsApp</label>
+              <input id="zap" name="zap" type="tel" inputmode="numeric" autocomplete="tel" placeholder="(13) 90000-0000" required>
+              <span class="err">Informe um WhatsApp com DDD.</span></div>
+          </div>
+          <div class="field"><label for="negocio">Seu negócio ou produto</label>
+            <input id="negocio" name="negocio" type="text" placeholder="Ex.: auto peças, moda fitness, utilidades" required>
+            <span class="err">Conte o que você vende.</span></div>
+          <div class="two-col">
+            <div class="field"><label for="onde">Onde você vende</label>
+              <select id="onde" name="onde" required>
+                <option value="">Selecione</option><option>Mercado Livre</option><option>Shopee</option>
+                <option>Amazon</option><option>Mais de um marketplace</option><option>Ainda não vendo</option>
+              </select><span class="err">Selecione uma opção.</span></div>
+            <div class="field"><label for="fat">Faturamento mensal</label>
+              <select id="fat" name="fat" required>
+                <option value="">Selecione</option><option>Começando do zero</option><option>Até R$ 10 mil</option>
+                <option>R$ 10 mil a R$ 50 mil</option><option>R$ 50 mil a R$ 100 mil</option><option>Acima de R$ 100 mil</option>
+              </select><span class="err">Selecione uma faixa.</span></div>
+          </div>
+          <div class="field"><label for="desafio">Maior desafio hoje <span style="color:var(--muted);font-weight:400">(opcional)</span></label>
+            <textarea id="desafio" name="desafio" placeholder="Ex.: ACOS alto, anúncio sem ranquear, margem apertada"></textarea></div>
+    
+          <div class="hp" aria-hidden="true"><label for="site_empresa">Não preencha</label>
+            <input id="site_empresa" name="site_empresa" type="text" tabindex="-1" autocomplete="off"></div>
+    
+          <div class="check"><input id="humano" type="checkbox" required>
+            <label for="humano" style="margin:0;font-weight:400">Confirmo que sou uma pessoa real e autorizo o contato pelo WhatsApp.</label></div>
+          <span class="err" id="humanoErr" style="display:none;color:#FF9B9B;font-size:.79rem">Marque a confirmação para continuar.</span>
+    
+          <input type="hidden" name="utm_source" id="utm_source"><input type="hidden" name="utm_medium" id="utm_medium">
+          <input type="hidden" name="utm_campaign" id="utm_campaign"><input type="hidden" name="utm_content" id="utm_content">
+          <input type="hidden" name="utm_term" id="utm_term"><input type="hidden" name="origem_cta" id="origem_cta">
+    
+          <button type="submit" class="btn btn-block" style="margin-top:1rem">Quero minha análise gratuita</button>
+          <p class="micro">Sem compromisso · Resposta em até 2h úteis · Dados protegidos (LGPD)</p>
+        </form>
+      </div>
+    </div>
+
+    <!-- os argumentos descem para uma faixa de largura total, em 3 colunas -->
+    <div class="bf-porque reveal">
+      <h3>Por que fechar antes da Black Friday</h3>
+      <ol class="layers tri">
+        <li><div><h3>Anúncio precisa de tempo para ranquear</h3><p>Título, ficha e histórico de vendas não sobem
+        da noite para o dia. Quem ajusta em novembro compete com quem ajustou em setembro.</p></div></li>
+        <li><div><h3>O CPC dispara no pico</h3><p>Com todo mundo anunciando, o clique fica mais caro. Campanha
+        calibrada antes entra na data sabendo quanto pode pagar por venda.</p></div></li>
+        <li><div><h3>Estoque no Full leva tempo</h3><p>Envio, conferência e disponibilização têm prazo.
+        Posicionar o produto certo antes do pico é o que evita ruptura no melhor dia do ano.</p></div></li>
+      </ol>
+      <div class="bf-nota">
+        <img class="mascote-inline" src="assets/mascote-aquila-apontando.webp" alt="" width="1164" height="1351" loading="lazy" decoding="async">
+        <p>A análise é gratuita e não obriga você a nada. Se fizer sentido, a condição de Black Friday é
+        aplicada na hora.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 9. FAQ ============ -->
+<section id="faq" class="light">
+  <div class="wrap" style="max-width:840px">
+    <div class="head reveal"><h2>Perguntas que todo lojista faz <b>antes de fechar.</b></h2></div>
+    <div class="reveal">
+      <details class="faq"><summary>Quanto custa e o que entra no valor?</summary>
+        <p>Na Black Friday, R$ 750 por mês (de R$ 1.250). Esse é o valor de entrada — se houver reajuste no
+        futuro, é pequeno e comunicado com antecedência. Entram otimização e
+        ranqueamento de anúncios, gestão de ads nos três canais, estudo da concorrência, revisão de precificação,
+        painel de vendas e margem, reuniões semanais e atendimento no WhatsApp. A verba investida nos anúncios é separada e fica com você.</p></details>
+      <details class="faq"><summary>Em quanto tempo eu vejo resultado?</summary>
+        <p>Ajustes de anúncio e campanha costumam mostrar movimento nas primeiras semanas. Ranqueamento e escala
+        consistente normalmente aparecem entre o segundo e o terceiro mês. Não prometemos faturamento garantido:
+        o resultado depende de produto, preço, estoque e concorrência.</p></details>
+      <details class="faq"><summary>Tem fidelidade ou multa para sair?</summary>
+        <p>Não. Sem fidelidade e sem contrato longo. Você continua porque o trabalho está entregando.</p></details>
+      <details class="faq"><summary>Funciona se eu estou começando do zero?</summary>
+        <p>Funciona. Atendemos desde a loja que ainda não vendeu a primeira unidade no canal até operações acima de
+        R$ 100 mil por mês. Começando do zero, o foco é estrutura: cadastro correto, precificação com margem real,
+        primeiros anúncios e reputação desde o primeiro pedido.</p></details>
+      <details class="faq"><summary>Quais marketplaces vocês atendem?</summary>
+        <p>Mercado Livre, Shopee e Amazon — é só nisso que trabalhamos. Se a sua loja já vende em um canal e quer
+        abrir outro, a entrada no novo marketplace faz parte do acompanhamento.</p></details>
+      <details class="faq"><summary>O que eu preciso entregar da minha parte?</summary>
+        <p>Acesso às contas de marketplace da sua loja, o custo de compra dos produtos, controle de estoque e
+        agilidade para aprovar mudanças de preço e anúncio. Uma reunião por semana e respostas no WhatsApp
+        quando surgir uma decisão. O restante é com a gente.</p></details>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============ 11. FAIXA CTA FINAL ============ -->
+<section class="band">
+  <div class="wrap">
+    <div class="reveal">
+      <h2 style="margin:0">O marketplace não perdoa loja desajustada <b>no mês de maior volume do ano.</b></h2>
+      <p class="lead" style="margin:.8rem 0 0">Entre agora e chegue na Black Friday com anúncio ranqueado,
+      campanha calibrada e estoque posicionado.</p>
+    </div>
+    <div class="reveal"><button class="btn" data-form data-cta="band">Quero minha análise gratuita</button></div>
+  </div>
+</section>
+
+<!-- ============ 12. RODAPÉ ============ -->
+<footer>
+  <div class="wrap foot">
+    <div style="display:flex;align-items:center;gap:.6rem">
+      <img class="mark mark-sm" src="assets/simbolo-aquila.webp" alt="" width="1097" height="1434">
+      <span>Aquila Marketing Digital · 2026 · São Vicente — SP</span>
+    </div>
+    <div style="display:flex;gap:1.2rem;flex-wrap:wrap">
+      <a href="https://instagram.com/nicolastassooficial" target="_blank" rel="noopener">@nicolastassooficial</a>
+      <a href="https://nicolastasso.site" target="_blank" rel="noopener">nicolastasso.site</a>
+      <a href="#" id="waFooter">WhatsApp</a>
+      <a href="#privacidade" id="abrePriv">Política de privacidade e LGPD</a>
+    </div>
+  </div>
+  <div class="wrap" id="privacidade" style="margin-top:1.2rem;font-size:.78rem;opacity:.75">
+    <p style="max-width:none;margin:0">Tratamos seus dados conforme a LGPD (Lei 13.709/18): as informações do
+    formulário são usadas apenas para o contato comercial solicitado, não são vendidas nem compartilhadas com
+    terceiros, e podem ser excluídas a pedido pelo WhatsApp ou Instagram. Os resultados apresentados são de
+    contas reais sob nossa gestão e não representam garantia de faturamento.</p>
+  </div>
+</footer>
+
+<!-- flutuantes -->
+<a class="wa" id="waFloat" href="#" aria-label="Falar no WhatsApp"><svg width="28" height="28" aria-hidden="true"><use href="#wa"/></svg></a>
+<div class="sticky"><button class="btn" data-form data-cta="sticky">Quero minha análise gratuita</button></div>
+
+<!-- lightbox dos prints de painel -->
+<dialog class="lb" id="lightbox" aria-label="Print do painel ampliado">
+  <button class="lb-btn lb-x" type="button" data-lb="fechar" aria-label="Fechar">&#10005;</button>
+  <button class="lb-btn lb-nav lb-prev" type="button" data-lb="anterior" aria-label="Case anterior">&#8249;</button>
+  <figure class="lb-fig">
+    <img id="lbImg" src="" alt="">
+    <!-- a legenda repete o alt da imagem, entao fica fora da arvore de acessibilidade -->
+    <figcaption aria-hidden="true"><span class="lb-canal" id="lbCanal"></span><span id="lbCap"></span></figcaption>
+  </figure>
+  <button class="lb-btn lb-nav lb-next" type="button" data-lb="proximo" aria-label="Próximo case">&#8250;</button>
+</dialog>
+
+<!-- modal do formulário -->
+<dialog class="modal" id="modal" aria-label="Solicitar análise gratuita">
+  <div class="modal-box">
+    <button class="modal-close" id="modalClose" aria-label="Fechar">×</button>
+    <div id="modalSlot"></div>
+  </div>
+</dialog>
+
+<script>
+/* ===== CONFIG — ajuste antes de publicar ======================== */
+const CONFIG = {
+  whatsapp: "5513999999999",            // TROCAR: 55 + DDD + número, só dígitos
+  deadline: "2026-11-30T23:59:59-03:00",// fim da campanha (Cyber Monday)
+  vagasTotais: 12,                      // DEFINIR
+  vagasRestantes: 7,                    // DEFINIR
+  msgPadrao: "Olá! Vim pela página da Aquila e quero minha análise gratuita."
+};
+
+/* ===== Contador regressivo ===================================== */
+const alvo = new Date(CONFIG.deadline).getTime();
+const box = document.getElementById('count');
+const pad = n => String(Math.max(0,n)).padStart(2,'0');
+function tick(){
+  const falta = alvo - Date.now(), fim = falta <= 0, s = Math.floor(falta/1000);
+  const v = {d:fim?0:Math.floor(s/86400), h:fim?0:Math.floor(s%86400/3600), m:fim?0:Math.floor(s%3600/60), s:fim?0:s%60};
+  ['d','h','m','s'].forEach(k=>{ const el = box.querySelector('[data-'+k+']'); if(el) el.textContent = pad(v[k]); });
+}
+tick(); setInterval(tick,1000);
+
+/* ===== Vagas =================================================== */
+(function(){
+  const left = Math.max(0, Math.min(CONFIG.vagasRestantes, CONFIG.vagasTotais));
+  document.getElementById('vagasLeft').textContent = left;
+  document.getElementById('vagasTotal').textContent = CONFIG.vagasTotais;
+  document.getElementById('vagasBar').style.width = (CONFIG.vagasTotais ? (1-left/CONFIG.vagasTotais)*100 : 0).toFixed(0)+'%';
+})();
+
+/* ===== UTMs ==================================================== */
+const UTM = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term'];
+const utms = {};
+(function(){
+  const q = new URLSearchParams(location.search);
+  UTM.forEach(k=>{
+    let v = q.get(k) || '';
+    try{ if(v) sessionStorage.setItem(k,v); else v = sessionStorage.getItem(k) || ''; }catch(e){}
+    utms[k]=v; const c = document.getElementById(k); if(c) c.value = v;
+  });
+})();
+
+/* ===== WhatsApp ================================================ */
+const linkWhats = t => 'https://wa.me/'+CONFIG.whatsapp+'?text='+encodeURIComponent(t);
+['waFloat','waFooter'].forEach(id=>{
+  const el = document.getElementById(id);
+  if(el){ el.href = linkWhats(CONFIG.msgPadrao); el.target='_blank'; el.rel='noopener'; }
+});
+
+/* ===== Rastreio (Meta Pixel / GA4 / dataLayer) ================= */
+function rastreia(ev,dados){
+  try{ if(typeof fbq==='function') fbq('track',ev,dados||{}); }catch(e){}
+  try{ if(typeof gtag==='function') gtag('event',ev,dados||{}); }catch(e){}
+  try{ window.dataLayer=window.dataLayer||[]; window.dataLayer.push(Object.assign({event:ev},dados||{})); }catch(e){}
+}
+
+/* ===== Modal do formulário ===================================== */
+const modal = document.getElementById('modal');
+const slot = document.getElementById('modalSlot');
+const host = document.getElementById('formHost');
+const form = document.getElementById('leadForm');
+
+function abreForm(origem){
+  document.getElementById('origem_cta').value = origem || '';
+  rastreia('ClickCTA',{origem:origem});
+  slot.appendChild(form);
+  if(typeof modal.showModal === 'function'){ modal.showModal(); }
+  else { modal.setAttribute('open',''); }
+  const primeiro = form.querySelector('input');
+  if(primeiro) setTimeout(()=>primeiro.focus(),80);
+}
+function fechaForm(){
+  if(modal.open && typeof modal.close === 'function') modal.close(); else modal.removeAttribute('open');
+  host.appendChild(form);           // devolve o formulário para a seção
+}
+document.querySelectorAll('[data-form]').forEach(b=>b.addEventListener('click',()=>abreForm(b.dataset.cta)));
+document.getElementById('modalClose').addEventListener('click',fechaForm);
+modal.addEventListener('close',()=>{ if(!host.contains(form)) host.appendChild(form); });
+modal.addEventListener('click',e=>{ if(e.target===modal) fechaForm(); });
+
+/* ===== Envio do formulário ===================================== */
+function marca(c,ok){ const f=c.closest('.field'); if(f) f.classList.toggle('invalid',!ok); return ok; }
+
+form.addEventListener('submit',function(e){
+  e.preventDefault();
+  if(document.getElementById('site_empresa').value !== '') return;   // honeypot
+
+  const nome=document.getElementById('nome'), zap=document.getElementById('zap'),
+        negocio=document.getElementById('negocio'), onde=document.getElementById('onde'),
+        fat=document.getElementById('fat'), desafio=document.getElementById('desafio'),
+        humano=document.getElementById('humano');
+  const dig = zap.value.replace(/\D/g,'');
+  let ok = true;
+  ok = marca(nome, nome.value.trim().length>=2) && ok;
+  ok = marca(zap, dig.length>=10 && dig.length<=13) && ok;
+  ok = marca(negocio, negocio.value.trim().length>=2) && ok;
+  ok = marca(onde, onde.value!=='') && ok;
+  ok = marca(fat, fat.value!=='') && ok;
+  document.getElementById('humanoErr').style.display = humano.checked ? 'none':'block';
+  ok = humano.checked && ok;
+  if(!ok){ const p = form.querySelector('.invalid input, .invalid select') || (humano.checked?null:humano); if(p) p.focus(); return; }
+
+  const linhas = ['Olá! Quero minha análise gratuita da Aquila.','',
+    'Nome: '+nome.value.trim(), 'WhatsApp: '+zap.value.trim(),
+    'Negócio/produto: '+negocio.value.trim(), 'Onde vende: '+onde.value,
+    'Faturamento mensal: '+fat.value];
+  if(desafio.value.trim()) linhas.push('Maior desafio: '+desafio.value.trim());
+  const origem = UTM.map(k=>utms[k]?k+'='+utms[k]:'').filter(Boolean).join(' | ');
+  if(origem) linhas.push('', 'Origem: '+origem);
+  linhas.push('Campanha: Black Friday Aquila');
+
+  rastreia('Lead',{faturamento:fat.value,canal:onde.value,origem:document.getElementById('origem_cta').value});
+  window.open(linkWhats(linhas.join('\n')),'_blank','noopener');
+
+  const btn = form.querySelector('button[type="submit"]'), txt = btn.textContent;
+  btn.textContent = 'Dados enviados — continue no WhatsApp';
+  setTimeout(()=>{ btn.textContent = txt; form.reset(); UTM.forEach(k=>{const c=document.getElementById(k); if(c) c.value=utms[k];}); },5000);
+});
+
+/* ===== Vídeo de apresentação ====================================
+   Dois arquivos: horizontal para desktop, vertical para celular. Só o
+   que vai ser visto é apontado no <source>, e preload="none" garante
+   que nada é baixado antes de a pessoa dar play. */
+(() => {
+  const v = document.getElementById('vApres');
+  if(!v) return;
+  const play = document.querySelector('.vplay');
+  const vertical = window.matchMedia('(max-width: 700px)');
+
+  const escolher = () => {
+    if(!v.paused || v.currentTime > 0) return;          // já em uso: não troca
+    const mob = vertical.matches;
+    const src = v.dataset[mob ? 'mob' : 'desk'];
+    const poster = v.dataset[mob ? 'mobPoster' : 'deskPoster'];
+    if(v.querySelector('source').src.endsWith(src)) return;
+    v.querySelector('source').src = src;
+    v.poster = poster;
+    v.load();
+  };
+  escolher();
+  vertical.addEventListener('change', escolher);
+
+  if(play){
+    play.addEventListener('click', () => {
+      v.controls = true;
+      v.play();
+      play.hidden = true;
+    });
+    v.addEventListener('play',  () => { play.hidden = true; v.controls = true; });
+    v.addEventListener('ended', () => { play.hidden = false; });
+  }
+
+  // alivia a página enquanto o vídeo roda (ver body.tocando no CSS)
+  const leve = (sim) => document.body.classList.toggle('tocando', sim);
+  v.addEventListener('playing', () => leve(true));
+  ['pause','ended','emptied'].forEach(e => v.addEventListener(e, () => leve(false)));
+})();
+
+/* ===== Lightbox dos prints de painel ===========================
+   Os cards continuam sendo links para o arquivo: se o JS não rodar,
+   o print abre em nova aba como antes. */
+(() => {
+  const lb = document.getElementById('lightbox');
+  const cards = [...document.querySelectorAll('.print')];
+  if(!lb || !cards.length || typeof lb.showModal !== 'function') return;
+
+  const img   = document.getElementById('lbImg');
+  const canal = document.getElementById('lbCanal');
+  const cap   = document.getElementById('lbCap');
+  const prev  = lb.querySelector('[data-lb="anterior"]');
+  const next  = lb.querySelector('[data-lb="proximo"]');
+  let i = 0;
+
+  const mostrar = (n) => {
+    i = (n + cards.length) % cards.length;
+    const card = cards[i], foto = card.querySelector('img');
+    img.src = card.getAttribute('href');
+    img.alt = foto ? foto.alt : '';
+    canal.textContent = (card.querySelector('.mkt') || {}).textContent || '';
+    cap.textContent = foto ? foto.alt : '';
+  };
+
+  if(cards.length < 2){ prev.hidden = next.hidden = true; }
+
+  cards.forEach((card, n) => card.addEventListener('click', (e) => {
+    e.preventDefault();
+    mostrar(n);
+    lb.showModal();
+    document.body.style.overflow = 'hidden';
+  }));
+
+  prev.addEventListener('click', () => mostrar(i - 1));
+  next.addEventListener('click', () => mostrar(i + 1));
+  lb.querySelector('[data-lb="fechar"]').addEventListener('click', () => lb.close());
+  lb.addEventListener('click', (e) => { if(e.target === lb) lb.close(); });
+  lb.addEventListener('close', () => { document.body.style.overflow = ''; });
+  lb.addEventListener('keydown', (e) => {
+    if(e.key === 'ArrowLeft'){  e.preventDefault(); mostrar(i - 1); }
+    if(e.key === 'ArrowRight'){ e.preventDefault(); mostrar(i + 1); }
+  });
+})();
+
+/* ===== Animação de entrada ===================================== */
+const reduz = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const alvos = document.querySelectorAll('.reveal');
+if(reduz || !('IntersectionObserver' in window)){ alvos.forEach(el=>el.classList.add('in')); }
+else{
+  const obs = new IntersectionObserver((ents)=>{
+    ents.forEach(en=>{ if(en.isIntersecting){ en.target.classList.add('in'); obs.unobserve(en.target); } });
+  },{rootMargin:'0px 0px -8% 0px',threshold:.06});
+  alvos.forEach(el=>obs.observe(el));
+}
+</script>
+</body>
+</html>
