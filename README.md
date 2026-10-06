@@ -42,3 +42,25 @@ python -m http.server 8000
 ## Deploy
 
 Hospedada na Vercel, conectada a este repositório. Todo push na branch `main` publica automaticamente em produção.
+
+## Tratamento da foto da seção "Para quem é"
+
+`assets/lojista-vestuario.webp` sangra sobre o fundo claro sem moldura. Isso só
+funciona porque o arquivo recebe três tratamentos antes de entrar no site: as
+sombras são levantadas (o original tem fundo escuro), as quatro bordas ganham
+esmaecimento em alpha e o resultado vira webp com canal alfa.
+
+Para refazer a partir de um novo original:
+
+```bash
+FX="crop=960:1024:576:0,curves=all='0/0.50 0.25/0.70 0.6/0.88 1/1',format=rgba,\
+geq=r='r(X,Y)':g='g(X,Y)':b='b(X,Y)':\
+a='255*min(1,min(min(X/260,Y/130),min((W-1-X)/150,(H-1-Y)/130)))'"
+
+ffmpeg -i original.png -vf "$FX" -frames:v 1 tmp.png
+ffmpeg -i tmp.png -c:v libwebp -pix_fmt yuva420p -quality 86 \
+  -compression_level 6 assets/lojista-vestuario.webp
+```
+
+Ajuste o `crop` ao enquadramento do novo arquivo. Se a foto for trocada sem esse
+tratamento, aparece um retângulo de borda dura na seção.

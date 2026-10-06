@@ -508,22 +508,21 @@ section.light{background-image:
 section.light .card{position:relative;overflow:hidden}
 section.light .card::after{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--mk,#1B3FA8)}
 /* "Para quem e": retrato da lojista ao lado do cabecalho.
-   Diferente do retrato anterior, esta foto tem fundo fotografico (nao e um
-   recorte com transparencia), entao entra emoldurada: mesmo raio dos cards e
-   sombra suave, para ler como foto editorial e nao como recorte com borda dura.
-   Se um dia entrar aqui um PNG com fundo removido, basta apagar o border-radius
-   e o box-shadow para a foto voltar a sangrar sobre o fundo claro.
+   O arquivo ja sai do tratamento com as sombras levantadas e as quatro bordas
+   esmaecidas em alpha, entao ele sangra direto sobre o fundo claro da secao —
+   sem moldura, sem sombra e sem mascara em CSS. Se a foto for trocada, o novo
+   arquivo precisa receber o mesmo tratamento, senao aparece um retangulo de
+   borda dura aqui.
    No mobile ela entra no fluxo, alinhada a direita; a partir de 960px passa a
    ocupar o canto inferior direito do bloco. */
 .pq-top{position:relative}
-.pq-foto{display:block;height:clamp(240px,50vw,320px);width:auto;
-  margin:1.2rem 0 0 auto;pointer-events:none;
-  border-radius:18px;box-shadow:0 22px 48px -26px rgba(10,20,64,.55)}
+.pq-foto{display:block;height:clamp(260px,54vw,340px);width:auto;
+  margin:.6rem -.5rem -1rem auto;pointer-events:none}
 @media(min-width:960px){
-  .pq-top{min-height:clamp(380px,38vw,520px)}
-  .pq-top .head{max-width:min(52%,56ch)}
+  .pq-top{min-height:clamp(420px,42vw,560px)}
+  .pq-top .head{max-width:min(50%,56ch)}
   .pq-foto{position:absolute;right:0;bottom:0;margin:0;
-    height:100%;max-width:46%;object-fit:cover;object-position:center top}
+    height:calc(100% + clamp(1rem,2.5vw,2.5rem));width:auto;max-width:50%}
 }
 
 #paraquem .card:nth-child(1){--mk:var(--ml-yellow)}
@@ -682,7 +681,7 @@ section.light h2 b{
         Atendemos de quem está começando do zero a quem já passa de R$ 100 mil por mês no canal.</p>
       </div>
       <img class="pq-foto" src="assets/lojista-vestuario.webp" alt=""
-           width="700" height="1010" loading="lazy" decoding="async">
+           width="960" height="1024" loading="lazy" decoding="async">
     </div>
 
     <div class="grid g4 reveal">
