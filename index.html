@@ -507,21 +507,27 @@ section.light{background-image:
 /* traço de cor no topo dos cards claros */
 section.light .card{position:relative;overflow:hidden}
 section.light .card::after{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--mk,#1B3FA8)}
-/* "Para quem e": lojista sobre o cenario da loja (arara, caixas, bancada).
-   O arquivo e uma composicao: recorte da lojista em cor original por cima do
-   cenario clareado, com as quatro bordas esmaecidas em alpha (receita no
-   README). Por isso ele sangra direto sobre o fundo claro, sem moldura.
-   No desktop a imagem e larga e o lado esquerdo, ja quase transparente, passa
-   por baixo do texto — o cabecalho fica acima dela via z-index. */
+/* "Para quem e": lojista na frente do cenario da loja (caixas, arara, bancada).
+   O arquivo e uma composicao de dois recortes sobre a cor do fundo da secao,
+   com topo, direita e base esmaecidos em alpha (receita no README).
+   O esmaecimento da esquerda fica na mascara CSS, e nao no arquivo, porque no
+   desktop o object-fit:cover corta justamente a esquerda quando a imagem bate
+   no max-width — um esmaecimento gravado no arquivo seria cortado junto e
+   deixaria uma borda vertical dura atras do texto.
+   O cabecalho fica acima da imagem via z-index. */
 .pq-top{position:relative}
 .pq-top .head{position:relative;z-index:1}
-.pq-foto{display:block;width:100%;height:auto;margin:.8rem 0 -1rem;pointer-events:none}
+.pq-foto{display:block;width:100%;height:auto;margin:.8rem 0 -1rem;pointer-events:none;
+  -webkit-mask-image:linear-gradient(to right,transparent 0,#000 18%);
+  mask-image:linear-gradient(to right,transparent 0,#000 18%)}
 @media(min-width:960px){
   .pq-top{min-height:clamp(420px,42vw,560px)}
   .pq-top .head{max-width:min(50%,56ch)}
   .pq-foto{position:absolute;right:0;bottom:0;margin:0;
     height:calc(100% + clamp(1rem,2.5vw,2.5rem));width:auto;max-width:62%;
-    object-fit:cover;object-position:right bottom}
+    object-fit:cover;object-position:right bottom;
+    -webkit-mask-image:linear-gradient(to right,transparent 0,#000 28%);
+    mask-image:linear-gradient(to right,transparent 0,#000 28%)}
 }
 
 #paraquem .card:nth-child(1){--mk:var(--ml-yellow)}

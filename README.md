@@ -45,26 +45,22 @@ Hospedada na Vercel, conectada a este repositório. Todo push na branch `main` p
 
 ## Tratamento da foto da seção "Para quem é"
 
-`assets/lojista-vestuario.webp` é uma composição de dois arquivos que ficam na raiz
-(fora do git, por serem PNGs de 2 MB):
+`assets/lojista-vestuario.webp` é uma composição de dois recortes com fundo
+transparente, que ficam na raiz (fora do git, por serem PNGs de 2 MB):
 
-- `Confident Marketplace Seller with Packing Supplies.png` — fornece o cenário
-  (arara, caixas, bancada). É clareado, e a faixa central, onde havia outra
-  pessoa, recebe desfoque forte para não aparecer "fantasma" atrás da lojista.
-- `Smiling shop owner transparent cutout.png` — o recorte da lojista, que entra
-  por cima em cor original.
+- `Apparel packing station with boxes.png` — o cenário (caixas, arara, bancada).
+- `Smiling shop owner transparent cutout.png` — a lojista, que entra na frente.
 
-Depois, as quatro bordas recebem esmaecimento em alpha e o resultado vira webp
-com canal alfa. Para refazer:
+Os dois são montados sobre a cor de fundo da seção (`#F3F6FD`); topo, direita e
+base recebem esmaecimento em alpha. O esmaecimento da esquerda é feito por
+`mask-image` no CSS (ver comentário em `.pq-foto`). Para refazer:
 
 ```bash
-ffmpeg -i "Confident Marketplace Seller with Packing Supplies.png" \
+ffmpeg -i "Apparel packing station with boxes.png" \
   -i "Smiling shop owner transparent cutout.png" -filter_complex "\
-[0:v]curves=all='0/0.70 0.3/0.85 0.7/0.95 1/1',eq=saturation=0.85,format=gbrp,split[a][b];\
-[a]gblur=sigma=2.5[s];[b]gblur=sigma=70[h];\
-[s][h]blend=all_expr='A*(1-clip((X-480)/90,0,1)*clip((1290-X)/90,0,1))+B*clip((X-480)/90,0,1)*clip((1290-X)/90,0,1)',format=rgba[bg];\
-[1:v]scale=-1:1100[fg];[bg][fg]overlay=504:70,crop=1336:1024:200:0,format=rgba,\
-geq=r='r(X,Y)':g='g(X,Y)':b='b(X,Y)':a='255*min(1,min(min(X/380,Y/70),min((W-1-X)/120,(H-1-Y)/160)))'" \
+color=c=0xF3F6FD:s=1336x1024,format=rgba[bg];[0:v]scale=1336:-1[sc];\
+[1:v]scale=-1:1100[fg];[bg][sc]overlay=0:H-h[t];[t][fg]overlay=434:70,format=rgba,\
+geq=r='r(X,Y)':g='g(X,Y)':b='b(X,Y)':a='255*min(1,min(Y/70,min((W-1-X)/120,(H-1-Y)/160)))'" \
   -frames:v 1 tmp.png
 ffmpeg -i tmp.png -c:v libwebp -pix_fmt yuva420p -quality 86 \
   -compression_level 6 assets/lojista-vestuario.webp
